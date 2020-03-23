@@ -1,7 +1,5 @@
 package leetcode;
 
-import com.atguigu.statement.crud.List;
-
 public class leetcode_1290 {
     public static void main(String[] args) {
         ListNode v1 = new ListNode();
