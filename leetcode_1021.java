@@ -8,6 +8,8 @@ public class leetcode_1021 {
     public static String removeOuterParentheses(String S){
         final char[] inputStr = S.toCharArray();
         final char[] outputStr = new char[S.length()];
-        return S;
+        for (char s: inputStr){
+        }
+        return null;
     }
 }
