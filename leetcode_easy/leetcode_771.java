@@ -1,6 +1,5 @@
-package leetcode;
+package leetcode_easy;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class leetcode_771 {
