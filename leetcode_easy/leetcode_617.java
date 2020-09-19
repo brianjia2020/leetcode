@@ -1,5 +1,6 @@
 package leetcode_easy;
 
+
 public class leetcode_617 {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
         if (t1 == null || t2 == null) return t1 == null ? t2:t1;
@@ -12,9 +13,9 @@ public class leetcode_617 {
 
 }
 
-//private class TreeNode {
-//    int val;
-//    TreeNode left;
-//    TreeNode right;
-//    TreeNode(int x) { val = x; }
-//}
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
