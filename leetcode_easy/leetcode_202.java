@@ -17,7 +17,7 @@ public class leetcode_202 {
         for (char c: num.toCharArray()){
             result += Character.getNumericValue(c) * Character.getNumericValue(c);
         }
-        System.out.println(result);
+//        System.out.println(result);
         if (result == 1){
             return true;
         }
