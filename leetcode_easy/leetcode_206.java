@@ -17,8 +17,6 @@ public class leetcode_206 {
         ListNode next;
         ListNode(int x){ val = x; }
     }
-
-
 }
 
 
