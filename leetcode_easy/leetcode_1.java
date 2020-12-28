@@ -36,9 +36,4 @@ public class leetcode_1 {
         }
         return null;
     }
-
-
-
-
-
 }
