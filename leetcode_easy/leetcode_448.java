@@ -1,13 +1,11 @@
 package leetcode_easy;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.LinkedList;
 import java.util.List;
 
 public class leetcode_448 {
 
-    public List<Integer> findDisappearedNumbers(int @NotNull [] nums) {
+    public List<Integer> findDisappearedNumbers(int [] nums) {
         List<Integer> ll = new LinkedList<>();
         int [] r = new int[nums.length];
         for(int x: nums) {
