@@ -12,6 +12,27 @@ public class leetcode_923 {
         System.out.println("Result: " + i);
     }
 
+    private static final int MOD=(int) 1e9 + 7;
+    private static final int MAX_VALUE = 100;
+    public int threeSumMulti2(int[] A, int target){
+        int n = A.length;
+        long answer = 0;
+        int[] arr = new int[MAX_VALUE+1];
+        for(int i = 1;i<n-1;i++){
+            Arrays.fill(arr,0);
+            for(int j=0;j<i;j++){
+                arr[A[i]]++;
+            }
+            for(int k=i+1;k<n;k++){
+                int rest = target - A[k] - A[i];
+                if(rest>=0 && rest <= MAX_VALUE){
+                    answer += arr[rest];
+                }
+            }
+        }
+        return (int) answer%MOD;
+    }
+
     public int threeSumMulti(int[] A, int target){
         if(A.length < 3 || A[0]>target) return 0;
         int count = 0;
