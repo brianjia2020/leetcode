@@ -7,8 +7,8 @@ import java.util.*;
 public class leetcode_923 {
     @Test
     public void test(){
-        int[] A = new int[]{92,4,59,23,100,16,7,15,3,78,98,17,77,33,83,15,87,35,54,72,58,14,87,47,58,31,72,58,87,22,25,54,27,53,13,54,61,12,96,24,35,43,94,1,88,76,89,89,41,56,61,65,60,91,89,79,86,52,27,2,97,46,50,46,87,93,71,87,95,78,65,10,35,51,34,66,61,7,49,38,10,1,88,37,50,84,35,20,7,83,51,85,11,12,89,93,54,23,36,95,100,19,82,67,96,77,53,56,51,16,54,7,30,68,78,13,38,52,91,44,54,17,21,44,4,10,85,19,11,88,73,36,47,53,3,21,41,24,60,53,88,35,48,89,35,3,43,85,45,67,56,78,44,49,29,35,68,96,29,21,51,17,52,99,3,48,65,51,22,38,77,81,30,64,99,35,88,72,73,29,29,2};
-        int i = threeSumMulti(A, 105);
+        int[] A = new int[]{0,0,0};
+        int i = threeSum3(A, 0);
         System.out.println("Result: " + i);
     }
 
@@ -70,5 +70,51 @@ public class leetcode_923 {
             }
         }
         return count;
+    }
+
+    public int threeSum3(int[] A, int target){
+        int[] count = new int[101];
+        final int MOD = 1000000007;
+        for(int i=0;i<A.length;i++){
+            count[A[i]]++;
+        }
+        System.out.println(Arrays.toString(count));
+        int res = 0;
+        for(int i=0;i<count.length;i++){
+            int c = count[i];
+//            System.out.println(c);
+            if (c==0) continue;
+            //three num are equal
+            if(c>=3 && i*3==target){
+                long num = 1l * (c - 2) * (c - 1) * c / 6;
+                System.out.println(num);
+                res = (int) (((num%MOD)+res)%MOD);
+                System.out.println(res);
+            }
+            //two num, one has frequency greater than 2 and the other num freq at least 1
+            if(c>=2){
+                int remain = target -2*i;
+                if(remain>=0 & remain<=100 && remain != i && count[remain] >0){
+                    long num = 1l * c * (c-1) /2 * count[remain];
+                    res = (int) (((num%MOD)+res)%MOD);
+                }
+            }
+        }
+
+        for(int i=0;i<count.length-2;i++){
+            int ci = count[i];
+            if(ci==0) continue;
+            for (int j=i+1;j<count.length-1;j++){
+                int cj = count[j];
+                if(cj==0) continue;
+                int remain = target - i - j;
+                if (remain>j && remain<=100 && count[remain]>0){
+                    long num = 1l* ci*cj*count[remain];
+                    res = (int) (((num%MOD)+res)%MOD);
+                }
+            }
+        }
+
+        return res;
     }
 }

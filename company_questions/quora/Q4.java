@@ -1,4 +1,4 @@
-package company_questions;
+package company_questions.quora;
 
 public class Q4 {
     public int findEven(String[] arr){

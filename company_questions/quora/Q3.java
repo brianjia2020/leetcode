@@ -1,4 +1,4 @@
-package company_questions;
+package company_questions.quora;
 
 import org.junit.Test;
 
