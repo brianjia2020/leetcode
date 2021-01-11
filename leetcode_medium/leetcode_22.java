@@ -32,4 +32,18 @@ public class leetcode_22 {
             permute(result, sb + ")", n,open, close + 1);
         }
     }
+
+    private List<String> list = new ArrayList<>();
+    public List<String> generateParenthesis2(int n){
+        permute(0,0,"",n);
+        return list;
+    }
+    public void permute(int left, int right, String sb,int n){
+        if(sb.length()==n*2) {
+            list.add(sb);
+            return;
+        }
+        if(left < n) permute(left+1,right,sb+"(",n);
+        if(right<left) permute(left,right+1,sb+")",n);
+    }
 }
