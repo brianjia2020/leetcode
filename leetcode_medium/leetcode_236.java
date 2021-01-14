@@ -17,21 +17,28 @@ public class leetcode_236 {
         root.right.right = new TreeNode(8);
         root.left.right.left = new TreeNode(7);
         root.left.right.right = new TreeNode(4);
-        lowestCommonAncestor(root, new TreeNode(5), new TreeNode(4));
-        System.out.println(ans);
+        TreeNode treeNode = lowestCommonAncestor(root, new TreeNode(5), new TreeNode(4));
+        System.out.println(treeNode);
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q){
-        recurseTree(root,p,q);
-        return ans;
+        if (root == null) return null;
+        if (root == p || root == q) return root;
+
+        //Divide
+        TreeNode left = lowestCommonAncestor(root.left,p,q);
+        TreeNode right = lowestCommonAncestor(root.right,p,q);
+        //Conquer
+        if(left!=null&&right!=null){
+            return root;
+        } else if(left==null&&right!=null) {
+            return right;
+        } else if(right==null&&left!=null) {
+            return left;
+        } else {
+            return null;
+        }
     }
 
-    public boolean recurseTree(TreeNode cur, TreeNode p, TreeNode q){
-        if(cur==null) return false;
-        int left = recurseTree(cur.left,p,q)?1:0;
-        int right = recurseTree(cur.right,p,q)?1:0;
-        int mid = (cur==p||cur==q)?1:0;
-        if(mid+left+right>=2) ans=cur;
-        return (mid+left+right>0);
-    }
+
 }
