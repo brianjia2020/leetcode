@@ -35,7 +35,7 @@ public class leetcode_923 {
 
     public int threeSumMulti(int[] A, int target){
         if(A.length < 3 || A[0]>target) return 0;
-        int count = 0;
+        long count = 0;
         int max=100;
         int kMod = (int) (1e9+7);
         Map<Integer,Integer> map = new HashMap<>();
@@ -53,9 +53,7 @@ public class leetcode_923 {
                 if(k<0||k>=max||!set.contains(k)) continue;
                 if(i<=j&&j<=k) {
                     if(i==j&&j==k&&map.get(i)>=3) {
-                        long count2 = map.get(i);
-                        count2 = count + (count2 - 2) *(count2-1)*count2/6;
-                        count = (int) (((count2%kMod)+count)%kMod);
+                        count = (map.get(i)-2)*(map.get(i)-1)*map.get(i)/6;
                     } else if (i==j && j!=k && map.get(i)>=2){
                         count += map.get(k)*(map.get(i)-1)*map.get(i)/2;
                     } else if (i!=k&&j==k&&map.get(j)>=2){
@@ -69,7 +67,7 @@ public class leetcode_923 {
                 }
             }
         }
-        return count;
+        return (int) (count%kMod);
     }
 
     public int threeSum3(int[] A, int target){
