@@ -5,7 +5,35 @@ import java.util.Arrays;
 public class Q4_StorageOptimization {
     public static void main(String[] args) {
         int[][] arr = new int[4][3];
-        System.out.println(storageOptimize(6,6,new int[]{4},new int[]{2}));
+        System.out.println(storageOptimize2(6,6,new int[]{4},new int[]{2}));
+    }
+
+    public static int storageOptimize2(int n,int m, int[] hor, int[] ver){
+        boolean[] h = new boolean[n + 1], v = new boolean[m + 1];
+        for (int i = 0; i < hor.length; i++) {
+            h[hor[i]] = true;
+        }
+        System.out.println(Arrays.toString(h));
+        for (int j = 0; j < ver.length; j++) {
+            v[ver[j]] = true;
+        }
+        System.out.println(Arrays.toString(v));
+        int inARowHor = 0, inARowVer = 0;
+        for (int i = 1, j = 0; i <= n; i++) {
+            if (!h[i]) j = 0;
+            else {
+                j++;
+                inARowHor = Math.max(inARowHor, j);
+            }
+        }
+        for (int i = 1, j = 0; i <= m; i++) {
+            if (!v[i]) j = 0;
+            else {
+                j++;
+                inARowVer = Math.max(inARowVer, j);
+            }
+        }
+        return (inARowHor + 1) * (inARowVer + 1);
     }
 
     public static int storageOptimize(int n, int m, int[] h, int[] v){
