@@ -8,6 +8,7 @@ public class Q4_StorageOptimization {
         System.out.println(storageOptimize2(6,6,new int[]{4},new int[]{2}));
     }
 
+    //O(n) solution
     public static int storageOptimize2(int n,int m, int[] hor, int[] ver){
         boolean[] h = new boolean[n + 1], v = new boolean[m + 1];
         for (int i = 0; i < hor.length; i++) {
@@ -36,6 +37,7 @@ public class Q4_StorageOptimization {
         return (inARowHor + 1) * (inARowVer + 1);
     }
 
+    //O(n^2) solution
     public static int storageOptimize(int n, int m, int[] h, int[] v){
         int[][] arr = new int[n+1][m+1];
         for(int i=0;i<arr.length;i++) Arrays.fill(arr[i],1);

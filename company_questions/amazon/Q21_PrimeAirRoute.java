@@ -34,7 +34,7 @@ public class Q21_PrimeAirRoute {
         }
     }
 
-    //solution
+    //best solution
     public static List<List<Integer>> findBestRoute2(int maxDistance,int[][] frontRoute,int[][] backRoute){
         Map<Integer, List<List<Integer>>> map = new HashMap<>();
         int minDiff = Integer.MAX_VALUE;

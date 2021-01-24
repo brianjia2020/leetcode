@@ -2,12 +2,38 @@ package company_questions.amazon;
 
 import java.util.Arrays;
 
-public class Q14_BetaTesting {
+public class Q14_BetaTesting_ScheduleJob {
     static int[][] mem;
 
     public static void main(String[] args) {
         int[] jobDifficulty = new int[]{6,5,4,3,2,1};
         System.out.println(minDifficulty(jobDifficulty,2));
+    }
+    //
+    public int minDifficulty2(int[] jobDifficulty, int d) {
+        if(jobDifficulty.length < d) return -1;
+        int[][] dp = new int[jobDifficulty.length + 1][];
+
+        for(int i = 0; i <= jobDifficulty.length; i ++){
+            dp[i] = new int[d+1];
+            for(int j = 0; j <=d; j ++){
+                dp[i][j] = Integer.MAX_VALUE/2;
+            }
+            // dp[0][0] =
+        }
+        dp[0][0] = 0;
+
+        for( int i = 0; i <= jobDifficulty.length; i ++){
+            for(int j = 1; j <=d; j ++){
+                int maxjob = 0;
+                for(int k = i-1; k >=j-1; k--){
+                    maxjob = Math.max(maxjob, jobDifficulty[k]);
+                    dp[i][j] = Math.min(dp[i][j], dp[k][j-1] + maxjob);
+                }
+            }
+        }
+
+        return dp[jobDifficulty.length][d];
     }
     public static int minDifficulty(int[] jobDifficulty,int d){
         int n = jobDifficulty.length;
