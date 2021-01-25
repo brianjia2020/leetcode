@@ -22,4 +22,5 @@ public class Q12_MusicPairs {
         }
         return res;
     }
+
 }
