@@ -13,7 +13,7 @@ public class Q2_FetchItemToDisplay {
     public static List<String> fetchItemsToDisplay(int numOfItems, Map<String, PairInt> items, int sortParameter, int sortOrder, int itemsPerPage, int pageNumber){
         if(itemsPerPage*(pageNumber-1)>numOfItems||numOfItems==0) return null;
         List<String> res = sortItems2(items,sortParameter,sortOrder);
-        System.out.println(res);
+//        System.out.println(res);
         List<String> res2 = new ArrayList<>();
         for(int i=pageNumber*itemsPerPage;i<itemsPerPage*(pageNumber+1);i++){
             if(i>=numOfItems) break;

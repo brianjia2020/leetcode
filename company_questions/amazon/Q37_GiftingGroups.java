@@ -1,6 +1,7 @@
 package company_questions.amazon;
 
 public class Q37_GiftingGroups {
+
     //NumberOfProvinces
     private boolean[] visited;
     public int findCircleNum(int[][] isConnected) {

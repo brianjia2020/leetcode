@@ -22,6 +22,7 @@ public class Q7_FreshPromotion {
         }
         return 0;
     }
+
     public static boolean canMatch(String[] subList, String[] shoppingCart,Set<String> set){
         if(shoppingCart.length< subList.length) return false;
         boolean res = true;
