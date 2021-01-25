@@ -15,7 +15,7 @@ public class FullfillmentBuilder {
 
     public static int getBestTime(List<Integer> parts){
         //edge cases
-        if(parts==null|parts.size()==0) return 0;
+        if(parts==null||parts.size()==0) return 0;
 
         //O(log n)
         Queue<Integer> queue = new PriorityQueue<>(parts);
@@ -26,7 +26,7 @@ public class FullfillmentBuilder {
             }
         });
         int res = 0;
-        while(queue.size()>=2){
+        while(queue.size()>1){
             Integer firstSmall = queue.poll();
             Integer secondSmall = queue.poll();
             res += (firstSmall+secondSmall);
