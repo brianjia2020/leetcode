@@ -9,7 +9,7 @@ public class AmazonPrimeAir {
 
     public static List<List<Integer>> getBestRoute(int maxDistance, List<List<Integer>> frontRouteList, List<List<Integer>> backRouteList){
         List<List<Integer>> emptyAns = new ArrayList<>();
-        emptyAns.add(new ArrayList<Integer>());
+        emptyAns.add(new ArrayList<>());
         if(frontRouteList==null||frontRouteList.size()==0||backRouteList==null||backRouteList.size()==0) {
             return emptyAns;
         }
