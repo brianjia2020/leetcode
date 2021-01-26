@@ -19,12 +19,14 @@ public class FullfillmentBuilder {
 
         //O(log n)
         Queue<Integer> queue = new PriorityQueue<>(parts);
-        parts.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return Integer.compare(o1, o2);
-            }
-        });
+
+//        parts.sort(new Comparator<Integer>() {
+//            @Override
+//            public int compare(Integer o1, Integer o2) {
+//                return Integer.compare(o1, o2);
+//            }
+//        });
+
         int res = 0;
         while(queue.size()>1){
             Integer firstSmall = queue.poll();

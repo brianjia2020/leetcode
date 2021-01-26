@@ -34,6 +34,7 @@ public class Q27_LargestItemAssociation {
                     break;
                 }
             }
+
             if(!flag) {
                 TreeSet<String> set = new TreeSet<>((o1,o2)->(o1.compareTo(o2)));
                 set.add(pairString.first);
@@ -41,7 +42,7 @@ public class Q27_LargestItemAssociation {
                 queue.add(set);
             }
         }
-//        System.out.println(queue);
+
         if(queue.isEmpty()) return new ArrayList<>();
         return new ArrayList<>(queue.peek());
     }
