@@ -12,6 +12,7 @@ public class Q33_ShoppingOptions {
         int[] tops = new int[]{1,2};
         System.out.println(getOptions(budget,jeans,shoes,skirts,tops));
     }
+    
     static int count=0;
     public static int getOptions(int budget,int[] jeans,int[] shoes,int[] skirts,int[] tops){
         Arrays.sort(jeans);

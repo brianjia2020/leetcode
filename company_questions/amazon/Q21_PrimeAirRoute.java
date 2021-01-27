@@ -3,6 +3,7 @@ package company_questions.amazon;
 import com.sun.source.tree.Tree;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Q21_PrimeAirRoute {
     public static void main(String[] args) {
@@ -16,13 +17,13 @@ public class Q21_PrimeAirRoute {
     //time limit exceeds
     public static List<List<Integer>> findBestRoute(int maxDistance,int[][] frontRoute,int[][] backRoute){
         TreeMap<Integer, List<List<Integer>>> map = new TreeMap<>();
-        for(int i=0;i<frontRoute.length;i++){
-            for(int j=0;j<backRoute.length;j++){
-                int totalDistance = frontRoute[i][1]+backRoute[j][1];
+        for (int[] ints : frontRoute) {
+            for (int[] value : backRoute) {
+                int totalDistance = ints[1] + value[1];
                 List<Integer> combination = new ArrayList<>();
-                combination.add(frontRoute[i][0]);
-                combination.add(backRoute[j][0]);
-                map.putIfAbsent(totalDistance,new ArrayList<>());
+                combination.add(ints[0]);
+                combination.add(value[0]);
+                map.putIfAbsent(totalDistance, new ArrayList<>());
                 map.get(totalDistance).add(combination);
             }
         }
@@ -39,17 +40,17 @@ public class Q21_PrimeAirRoute {
         Map<Integer, List<List<Integer>>> map = new HashMap<>();
         int minDiff = Integer.MAX_VALUE;
         int bestDistance = 0;
-        for(int i=0;i<frontRoute.length;i++){
-            for(int j=0;j<backRoute.length;j++){
-                int totalDistance = frontRoute[i][1]+backRoute[j][1];
-                if(totalDistance>maxDistance) continue;
-                int curDiff = maxDistance-totalDistance;
-                if(curDiff<=minDiff) {
-                    if(minDiff!=Integer.MAX_VALUE) {
+        for (int[] ints : frontRoute) {
+            for (int[] value : backRoute) {
+                int totalDistance = ints[1] + value[1];
+                if (totalDistance > maxDistance) continue;
+                int curDiff = maxDistance - totalDistance;
+                if (curDiff <= minDiff) {
+                    if (minDiff != Integer.MAX_VALUE) {
                         List<Integer> combination = new ArrayList<>();
-                        combination.add(frontRoute[i][0]);
-                        combination.add(backRoute[j][0]);
-                        map.putIfAbsent(totalDistance,new ArrayList<>());
+                        combination.add(ints[0]);
+                        combination.add(value[0]);
+                        map.putIfAbsent(totalDistance, new ArrayList<>());
                         map.get(totalDistance).add(combination);
                     }
                     minDiff = curDiff;
@@ -58,6 +59,39 @@ public class Q21_PrimeAirRoute {
             }
         }
         return map.get(bestDistance);
+    }
+
+    public static List<List<Integer>> getIdPairsForOptimal(List<List<Integer>> forwardList,
+                                                           List<List<Integer>> backwardList, int maxDistance) {
+        List<List<Integer>> result = new LinkedList<List<Integer>>();
+        forwardList = forwardList.stream().sorted((x1, x2) -> Integer.compare(x2.get(1), x1.get(1)))
+                .collect(Collectors.toList());
+        backwardList = backwardList.stream().sorted((x1, x2) -> Integer.compare(x1.get(1), x2.get(1)))
+                .collect(Collectors.toList());
+        int maxDist = maxDistance;
+        while (true) {
+            for (List<Integer> l : forwardList) {
+                for (List<Integer> b : backwardList) {
+                    int forward = l.get(1);
+                    int backward = b.get(1);
+                    int tot = (forward + backward);
+                    if (tot > maxDist) {
+                        break;
+                    }
+                    if (tot == maxDist) {
+                        // print the pair of Id and optimum distance
+                        result.add(Arrays.asList(l.get(0), b.get(0), maxDist));
+                        break;
+                    }
+
+                }
+            }
+            if (result.size() > 0) {
+                break;
+            }
+            maxDist--;
+        }
+        return result;
     }
 
 
