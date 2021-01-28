@@ -32,5 +32,4 @@ public class leetcode_779 {
         return KthGrammar2(N-1, K/2)==1?0:1;
     }
 
-
 }
