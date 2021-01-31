@@ -12,7 +12,7 @@ public class leetcode_139 {
 
     @Test
     public void test(){
-        String s = "catsanddog";
+        String s = "catsandog";
         ArrayList<String> wordDict = new ArrayList<>();
         wordDict.add("cat");
         wordDict.add("cats");
@@ -39,8 +39,5 @@ public class leetcode_139 {
         }
 
         return mem[start] = false;
-
     }
-
-
 }
