@@ -10,7 +10,19 @@ public class FullfillmentBuilder {
         parts.add(8);
         parts.add(10);
         parts.add(6);
-        System.out.println(getBestTime(parts));
+        System.out.println(getBestTime2(parts));
+    }
+
+    public static int getBestTime2(List<Integer> parts){
+        Collections.sort(parts);
+        int minTime = 0;
+        int firstPart = parts.get(0);
+        for(int i=1;i<parts.size();i++){
+            int stepTime = firstPart + parts.get(i);
+            minTime += stepTime;
+            firstPart += parts.get(i);
+        }
+        return minTime;
     }
 
     public static int getBestTime(List<Integer> parts){
