@@ -30,9 +30,9 @@ public class leetcode_236 {
         //Conquer
         if(left!=null&&right!=null){
             return root;
-        } else if(left==null&&right!=null) {
+        } else if(left==null) {
             return right;
-        } else if(right==null&&left!=null) {
+        } else if(right==null) {
             return left;
         } else {
             return null;
