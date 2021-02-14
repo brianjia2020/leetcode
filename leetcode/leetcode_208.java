@@ -5,16 +5,17 @@ public class leetcode_208 {
 
     }
 }
-class TrieNode{
-    public boolean isWord;
-    public TrieNode[] children = new TrieNode[26];
-    public TrieNode(){};
-    public TrieNode(char c ){
-        TrieNode node = new TrieNode();
-    }
-}
+
 
 class Trie{
+    private class TrieNode{
+        public boolean isWord;
+        public TrieNode[] children = new TrieNode[26];
+        public TrieNode(){};
+        public TrieNode(char c ){
+            TrieNode node = new TrieNode();
+        }
+    }
     public TrieNode root;
 
     public Trie(){
