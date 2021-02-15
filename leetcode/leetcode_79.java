@@ -23,7 +23,7 @@ public class leetcode_79 {
         return false;
     }
 
-    public boolean foundPattern(char[][] board, int i,int j, String word,int index){
+    public boolean foundPattern(char[][] board, int i,int j, String word, int index){
 
         if (i < 0 || i > board.length-1 || j<0 || j > board[0].length-1 || board[i][j] != word.charAt(index)) {
             return false;
