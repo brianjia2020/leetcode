@@ -20,7 +20,8 @@ public class leetcode_347 {
         for(int i = 0; i < k;i++){
             result[i] = temp1.get(i);
         }
-
+        
         return result;
     }
+
 }
