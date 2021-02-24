@@ -21,19 +21,13 @@ public class countNum {
         int[] res = new int[arr1.length];
         if(arr2==null||arr2.length==0) return res;
         Arrays.sort(arr2);
-        System.out.println(Arrays.toString(arr2));
         for(int i=0;i<arr1.length;i++){
-
-//            int loc = Arrays.binarySearch(arr2, arr1[i]);
-            System.out.println(arr1[i]+" "+binarySearch(arr1[i],arr2));
             res[i] = binarySearch(arr1[i],arr2);
         }
         return res;
     }
 
     public int binarySearch(int num, int[] arr2){
-//        if(num<arr2[0]) return 0;
-//        if(num>arr2[arr2.length-1]) return arr2.length-1;
         int l = 0;
         int r = arr2.length-1;
         while (l<r){
