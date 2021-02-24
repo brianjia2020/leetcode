@@ -63,7 +63,6 @@ public class NDice {
             System.out.println();
         }
     }
-
 }
 
 class Dice {

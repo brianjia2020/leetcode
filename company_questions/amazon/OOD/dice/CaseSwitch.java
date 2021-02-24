@@ -44,33 +44,33 @@ public class CaseSwitch {
         else if (resCase.equals("dash")) return Arrays.asList(s.split("-"));
         else if (resCase.equals("camel")){
             List<String> res = new ArrayList<>();
-            String temp = "";
+            StringBuilder temp = new StringBuilder();
             for(char c: s.toCharArray()){
                 if(c>='A'&&c<='Z'){
-                    res.add(temp);
-                    temp = "";
+                    res.add(temp.toString());
+                    temp = new StringBuilder();
                 }
-                temp += c;
+                temp.append(c);
             }
-            res.add(temp);
+            res.add(temp.toString());
             return res;
         }
         else return new ArrayList<>();
     }
 
     public String combineWords(List<String> lists, String targetCase){
-        String res = lists.get(0);
+        StringBuilder res = new StringBuilder(lists.get(0));
         for(int i=1;i<lists.size();i++){
             if(targetCase.equals("camel")) {
                 String temp = lists.get(i).substring(0,1).toUpperCase() + lists.get(i).substring(1);
-                res += temp;
+                res.append(temp);
             } else if (targetCase.equals("snake")){
-                res += "_" + lists.get(i);
+                res.append("_").append(lists.get(i));
             } else if (targetCase.equals("dash")){
-                res += "-" + lists.get(i);
+                res.append("-").append(lists.get(i));
             }
         }
-        return res;
+        return res.toString();
     }
 
 
