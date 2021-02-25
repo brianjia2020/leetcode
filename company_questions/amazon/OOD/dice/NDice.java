@@ -66,14 +66,10 @@ public class NDice {
 }
 
 class Dice {
-
     public Dice(){
     };
-
     //function to generate a random int number from 1 to 6
     public int getRandom(){
         return (int) Math.ceil(Math.random()*6);
     }
-
-
 }

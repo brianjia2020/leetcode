@@ -1,4 +1,4 @@
-package company_questions.amazon.OOD.dice;
+package company_questions.amazon.OOD.caseSwitch;
 
 import java.util.*;
 
