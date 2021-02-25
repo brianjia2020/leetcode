@@ -4,9 +4,37 @@ import java.util.Stack;
 
 public class Calculator {
 
+    //leetcode 224 (2+3-4)+1
+    public int calculate1(String s) {
+        int len = s.length(), sign = 1, result = 0;
+        Stack<Integer> stack = new Stack<Integer>();
+        for (int i = 0; i < len; i++) {
+            if (Character.isDigit(s.charAt(i))) {
+                int sum = s.charAt(i) - '0';
+                while (i + 1 < len && Character.isDigit(s.charAt(i + 1))) {
+                    sum = sum * 10 + s.charAt(i + 1) - '0';
+                    i++;
+                }
+                result += sum * sign;
+            } else if (s.charAt(i) == '+')
+                sign = 1;
+            else if (s.charAt(i) == '-')
+                sign = -1;
+            else if (s.charAt(i) == '(') {
+                stack.push(result);
+                stack.push(sign);
+                result = 0;
+                sign = 1;
+            } else if (s.charAt(i) == ')') {
+                result = result * stack.pop() + stack.pop();
+            }
 
-    //leetcode 227
-    public int calculate(String s){
+        }
+        return result;
+    }
+
+    //leetcode 227 2+3*4
+    public int calculate2(String s){
         //edge cases:
         if(s==null||s.length()==0) return 0;
         //solution:
@@ -47,8 +75,8 @@ public class Calculator {
         return sum;
     }
 
-    //leetcode 772
-    public int calculate2(String s){
+    //leetcode 772 2+(2+2*3)
+    public int calculate3(String s){
         //edge cases:
         if(s==null||s.length()==0) return 0;
         //solution:
