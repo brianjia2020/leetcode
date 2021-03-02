@@ -28,7 +28,6 @@ public class Calculator {
             } else if (s.charAt(i) == ')') {
                 result = result * stack.pop() + stack.pop();
             }
-
         }
         return result;
     }
